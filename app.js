@@ -249,5 +249,56 @@ document.addEventListener('DOMContentLoaded', () => {
     turnDisplay.innerHTML('Your Go')
   }
 
+  function checkForWins() {
+    if (destroyerCount === 2) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s destroyer'
+      destroyerCount = 10
+    }
+    if (submarineCount === 3) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s submarine'
+      submarineCount = 10
+    }
+    if (cruiserCount === 3) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s cruiser'
+      cruiserCount = 10
+    }
+    if (battleshipCount === 4) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s battleship'
+      battleshipCount = 10
+    }
+    if (carrierCount === 5) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s carrier'
+      carrierCount = 10
+    }
+    if (cpuDestroyerCount === 2) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s destroyer'
+      cpuDestroyerCount = 10
+    }
+    if (cpuSubmarineCount === 3) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s submarine'
+      cpuSubmarineCount = 10
+    }
+    if (cpuCruiserCount === 3) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s cruiser'
+      cpuCruiserCount = 10
+    }
+    if (cpuBattleshipCount === 4) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s battleship'
+      cpuBattleshipCount = 10
+    }
+    if (cpuCarrierCount === 5) {
+      infoDisplay.innerHTML = 'You sunk the computer\'s carrier'
+      cpuCarrierCount = 10
+    }
+    if ((destroyerCount + submarineCount + cruiserCount + battleshipCount + carrierCount) === 50) {
+      infoDisplay.innerHTML = 'YOU WIN'
+      gameOver()
+    }
+    if ((cpuDestroyerCount + cpuSubmarineCount + cpuCruiserCount + cpuBattleshipCount + cpuCarrierCount) === 50) {
+      infoDisplay.innerHTML = 'COMPUTER WINS'
+      gameOver()
+    }
+  }
+
 })
 
