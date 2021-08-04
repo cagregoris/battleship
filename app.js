@@ -300,5 +300,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function gameOver() {
+    isGameOver = true
+    startButton.removeEventListener('click', playGame)
+  }
+
 })
 
