@@ -3,7 +3,6 @@ const path = require('path')
 const http =  require('http')
 const PORT = process.env.PORT || 3000
 const socketio = require('socket.io')
-const { Socket } = require('dgram')
 const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
@@ -27,11 +26,25 @@ io.on('connection', socket => {
     }
   }
 
-  // Ignore player 3
-  if (playerIndex === -1) return
-
   // Tell the connecting client what player number they are
   socket.emit('player-number', playerIndex)
-
+  
   console.log(`Player ${playerIndex} has connected`)
+
+  // Ignore player 3
+  if (playerIndex === -1) return
+  
+  // Initially the player is not ready
+  connections[playerIndex] = false
+
+  //Tell everyone what player number just connected
+  socket.broadcast.emit('player-connection', playerIndex)
+
+  //Handle Disconnect
+  socket.on('disconnect', () => {
+    console.log(`Player ${playerIndex} disconnected`)
+    connections[playerIndex] = null
+    //Tell everyone which player number just disconnected
+    socket.broadcast.emit('player-connection', playerIndex)
+  })
 })
