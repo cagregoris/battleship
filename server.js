@@ -47,4 +47,35 @@ io.on('connection', socket => {
     //Tell everyone which player number just disconnected
     socket.broadcast.emit('player-connection', playerIndex)
   })
+
+  // on ready
+  socket.on('player-ready', () => {
+    socket.broadcast.emit('enemy-ready', playerIndex)
+    connections[playerIndex] = true
+  })
+
+  // check player connections
+  socket.on('check-players', () => {
+    const players = [];
+    for (const i in connections) {
+      connections[i] === null ? players.push({connected: false, ready: false}) : players.push({connected: true, ready: connections[i]})
+    }
+    socket.emit('check-players', players)
+  })
+
+  // On fire received
+  socket.on('fire', id => {
+    console.log(`Shot fired from ${playerIndex}`, id)
+
+    //Emit the move to the other player
+    socket.broadcast.emit('fire', id)
+  })
+
+  //On fire reply
+  socket.on('fire-reply', square => {
+    console.log(square)
+
+    // Forward the reply to the other player
+    socket.broadcast.emit('fire-reply', square)
+  })
 })
