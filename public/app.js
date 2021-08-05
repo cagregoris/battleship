@@ -78,6 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     })
 
+    // On timeout
+    socket.on('timeout', () => {
+      infoDisplay.innerHTML = 'You have reached the 10 minute limit'
+    })
+
     //Ready button click
     startButton.addEventListener('click', () => {
       if(allShipsPlaced) playGameMulti(socket)
@@ -382,43 +387,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function checkForWins() {
     if (destroyerCount === 2) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s destroyer'
+      let enemy = 'comuter'
+      if(gameMode === 'multiPlayer') enemy = 'enemy'
+      infoDisplay.innerHTML = `You sunk the ${enemy}'s destroyer`
       destroyerCount = 10
     }
     if (submarineCount === 3) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s submarine'
+      infoDisplay.innerHTML = `You sunk the ${enemy}'s submarine`
       submarineCount = 10
     }
     if (cruiserCount === 3) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s cruiser'
+      infoDisplay.innerHTML = `You sunk the ${enemy}'s cruiser`
       cruiserCount = 10
     }
     if (battleshipCount === 4) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s battleship'
+      infoDisplay.innerHTML = `You sunk the ${enemy}'s battleship`
       battleshipCount = 10
     }
     if (carrierCount === 5) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s carrier'
+      infoDisplay.innerHTML = `You sunk the ${enemy}'s carrier`
       carrierCount = 10
     }
     if (cpuDestroyerCount === 2) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s destroyer'
+      infoDisplay.innerHTML = `${enemy} sunk your destroyer`
       cpuDestroyerCount = 10
     }
     if (cpuSubmarineCount === 3) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s submarine'
+      infoDisplay.innerHTML = `${enemy} sunk your submarine`
       cpuSubmarineCount = 10
     }
     if (cpuCruiserCount === 3) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s cruiser'
+      infoDisplay.innerHTML = `${enemy} sunk your cruiser`
       cpuCruiserCount = 10
     }
     if (cpuBattleshipCount === 4) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s battleship'
+      infoDisplay.innerHTML = `${enemy} sunk your battleship`
       cpuBattleshipCount = 10
     }
     if (cpuCarrierCount === 5) {
-      infoDisplay.innerHTML = 'You sunk the enemy\'s carrier'
+      infoDisplay.innerHTML = `${enemy} sunk your carrier`
       cpuCarrierCount = 10
     }
     if ((destroyerCount + submarineCount + cruiserCount + battleshipCount + carrierCount) === 50) {
@@ -426,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gameOver()
     }
     if ((cpuDestroyerCount + cpuSubmarineCount + cpuCruiserCount + cpuBattleshipCount + cpuCarrierCount) === 50) {
-      infoDisplay.innerHTML = 'ENEMY WINS'
+      infoDisplay.innerHTML = `${enemy.toUpperCase()} WINS`
       gameOver()
     }
   }
