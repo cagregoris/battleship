@@ -75,7 +75,23 @@ body {
   background-color: hsl(0, 0%, 80%);
 }
 
+.grid-display {
+  display: flex;
+}
 
+.ship > div {
+  width: 4.6vmin;
+  height: 4.6vmin;
+}
+
+.ship {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1vmin;
+  width: calc(4.6vmin * var(--width, 1));
+  height: calc(4.6vmin * var(--height, 1));
+  border-radius: 2.3vmin;
+}
 
 
 
@@ -86,90 +102,42 @@ body {
   border: 1px solid hsla(0, 0%, 100%, .2)
 }
 
-.grid-display {
-  width: 400px;
-  height: 400px;
-  margin: 20px;
-}
-
 .destroyer-container {
-  width: 80px;
-  height: 40px;
-  margin: 10px;
-  display: flex;
+  --width: 2;
 }
 
 .destroyer-container-vertical {
-  width: 40px;
-  height: 80px;
-  margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
+  --height: 2;
+  --width: 1;
 }
 
-.submarine-container {
-  width: 120px;
-  height: 40px;
-  margin: 10px;
-  display: flex;
-}
-
-.submarine-container-vertical {
-  width: 40px;
-  height: 120px;
-  margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
+.submarine-container,
 .cruiser-container {
-  width: 120px;
-  height: 40px;
-  margin: 10px;
-  display: flex;
+  --width: 3;
 }
 
+.submarine-container-vertical,
 .cruiser-container-vertical {
-  width: 40px;
-  height: 120px;
-  margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
+  --height: 3;
+  --width: 1;
 }
 
 .battleship-container {
-  width: 160px;
-  height: 40px;
-  margin: 10px;
-  display: flex;
+  --width: 4;
 }
 
 .battleship-container-vertical {
-  width: 40px;
-  height: 160px;
-  margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
+  --height: 4;
+  --width: 1;
 }
 
 .carrier-container {
-  width: 200px;
-  height: 40px;
-  margin: 10px;
-  display: flex;
+  --width: 5;
 }
 
 .carrier-container-vertical {
-  width: 40px;
-  height: 200px;
-  margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.ship div {
-  width: 40px;
-  height: 40px;
+  --height: 5;
+  --width: 1;
 }
 
 .boom {
