@@ -326,12 +326,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentPlayer === 'user') {
       turnDisplay.innerHTML = 'Your Go'
       computerSquares.forEach(square => square.addEventListener('click', function(e) {
+        shotFired = square.dataset.id
         revealSquare(square.classList)
       }))
     }
-
     if (currentPlayer === 'enemy') {
-      turnDisplay.innerHTML = 'Computer\'s Go'
+      turnDisplay.innerHTML = 'Computers Go'
       setTimeout (enemyGo, 1000)
     }
   }
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     checkForWins()
     currentPlayer = 'enemy'
-    if (gameMode === 'singlePlayer') playGameSingle
+    if (gameMode === 'singlePlayer') playGameSingle()
   }
 
 
@@ -386,9 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function checkForWins() {
+    let enemy = 'comuter'
+    if(gameMode === 'multiPlayer') enemy = 'enemy'
     if (destroyerCount === 2) {
-      let enemy = 'comuter'
-      if(gameMode === 'multiPlayer') enemy = 'enemy'
       infoDisplay.innerHTML = `You sunk the ${enemy}'s destroyer`
       destroyerCount = 10
     }
