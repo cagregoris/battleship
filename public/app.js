@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function checkForWins() {
-    let enemy = 'comuter'
+    let enemy = 'computer'
     if(gameMode === 'multiPlayer') enemy = 'enemy'
     if (destroyerCount === 2) {
       infoDisplay.innerHTML = `You sunk the ${enemy}'s destroyer`
