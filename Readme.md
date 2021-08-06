@@ -15,7 +15,7 @@ JavaScript Battleship game built with the help of web dev simplified
 2. Start the web server using the `npm run dev` command. The app will be served at <http://localhost:3000/>.
 3. Go to <http://localhost:3000/> in your browser.
 
-## OR
+#### OR
 
 Follow this link to play on my Heroku app: https://battleship-caro.herokuapp.com/index.html
 
