@@ -299,3 +299,8 @@ body {
   opacity: 1;
   text-decoration: none;
 }
+
+#back {
+  margin: 10px;
+  font-size: medium;
+}
