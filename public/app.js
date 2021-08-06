@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function playerConnectedOrDisconnected(num) {
       let player = `.p${parseInt(num) + 1}`
-      document.querySelector(`${player} .connected span`).classList.toggle('green')
+      document.querySelector(`${player} .connected`).classList.toggle('active')
       if (parseInt(num) === playerNum) document.querySelector(player).style.fontWeight = 'bold'
     }
   }
@@ -309,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Game logic for multi player
   function playGameMulti(socket) {
+    setUpButtons.style.display = 'none'
     if(isGameOver) return
     if(!ready) {
       socket.emit('player-ready')
@@ -327,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function playerReady(num) {
     let player = `.p${parseInt(num) + 1}`
-    document.querySelector(`${player} .ready span`).classList.toggle('green')
+    document.querySelector(`${player} .ready`).classList.toggle('active')
   }
 
   //Game Logic for single player
